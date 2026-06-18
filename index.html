@@ -27,9 +27,28 @@
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-<audio autoplay>
-  <source src="https://audio.com/romdanitendy/audio/audio-stin" type="audio/mpeg">
+
+
+	<audio id="myAudio" autoplay muted controls>
+  <source src="audio/stin.mp3" type="audio/mpeg">
+  Browser tidak mendukung audio.
 </audio>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const audio = document.getElementById('myAudio');
+    
+    // Coba putar otomatis saat halaman selesai dimuat
+    audio.play().catch(error => {
+      console.log("Autoplay diblokir oleh browser, menunggu interaksi pengguna...");
+      
+      // Jika diblokir, audio akan berputar otomatis begitu user klik/sentuh layar
+      document.addEventListener('click', () => {
+        audio.play();
+      }, { once: true }); // { once: true } membuat fungsi ini hanya berjalan 1 kali klik
+    });
+  });
+</script>
 
 
 	<nav style="display: none;" class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
