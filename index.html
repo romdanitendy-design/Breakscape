@@ -29,26 +29,23 @@
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
 
-	<audio id="myAudio" autoplay muted controls>
-  <source src="https://github.com/romdanitendy-design/Breakscape/blob/main/audio/stin.MP3" type="audio/mpeg">
-  Browser tidak mendukung audio.
-</audio>
+	<audio  id="laguKu">
+        <source src="audio/stin.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
 
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-    const audio = document.getElementById('myAudio');
-    
-    // Coba putar otomatis saat halaman selesai dimuat
-    audio.play().catch(error => {
-      console.log("Autoplay diblokir oleh browser, menunggu interaksi pengguna...");
-      
-      // Jika diblokir, audio akan berputar otomatis begitu user klik/sentuh layar
-      document.addEventListener('click', () => {
-        audio.play();
-      }, { once: true }); // { once: true } membuat fungsi ini hanya berjalan 1 kali klik
-    });
-  });
-</script>
+    <button class="btn-play" style="position: absolute; width: 100vw; height: 100vh; background: red; z-index: 1; opacity: 0;" onclick="putarAudio()"></button>
+
+    <script>
+        function putarAudio() {
+            // Mengambil elemen audio berdasarkan ID
+            var audio = document.getElementById("laguKu");
+            
+            // Menjalankan fungsi play() bawaan JavaScript
+            audio.play();
+        }
+    </script>
+
 
 
 	<nav style="display: none;" class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
